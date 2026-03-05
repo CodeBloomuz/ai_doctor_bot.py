@@ -14,7 +14,7 @@ import os
 # ═══════════════════════════════════════════════
 #  SOZLAMALAR
 # ═══════════════════════════════════════════════
-BOT_TOKEN = os.environ.get("8610178273:AAGXoZ5pQiHjL0M6iX8LsI2yPfwPX9elh9g")
+BOT_TOKEN = os.environ.get("BOT_TOKEN")
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
 
 bot = telebot.TeleBot(BOT_TOKEN)
