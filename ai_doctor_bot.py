@@ -301,8 +301,14 @@ def ask_ai(prompt: str, lang: str) -> str:
             messages=[{"role": "user", "content": prompt}]
         )
         return msg.content[0].text
-    except Exception:
-        return "❌ Xatolik yuz berdi." if lang == "uz" else "❌ Произошла ошибка."
+    except Exception as e:
+        err = str(e)
+        if "401" in err or "auth" in err.lower():
+            return "❌ ANTHROPIC_API_KEY noto'g'ri. Railway Variables ni tekshiring."
+        elif "429" in err:
+            return "❌ API limit to'ldi. Biroz kuting."
+        else:
+            return f"❌ Xatolik tafsiloti: {err[:300]}"
 
 # ═══════════════════════════════════════════════
 #  KLINIKA QIDIRISH (matn)
