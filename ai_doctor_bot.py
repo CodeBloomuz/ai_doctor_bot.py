@@ -116,7 +116,7 @@ DISEASES = {
     "ko'p terlash tunda": {"ehtimoliy": ["Sil", "Limfoma", "Gipertireoz", "Menopauza"], "shifokor": "Terapevt — TEZDA", "uy": "Shifokorga boring", "xavfli": ["Vazn yo'qotish bilan — albatta shifokorga!"]},
 }
 
-def analyze_symptoms(text):
+def analyze_symptoms(text, lang='uz'):
     text = text.lower().strip()
     if text in DISEASES:
         return DISEASES[text]
@@ -1941,7 +1941,7 @@ def ask_ai(prompt: str, lang: str) -> str:
             symptom = prompt.split(prefix)[-1].split("\n")[0].strip()
             break
 
-    result = analyze_symptoms(symptom)
+    result = analyze_symptoms(symptom, lang)
 
     if result:
         if lang == "uz":
